@@ -1,0 +1,9 @@
+ configs_dir: ./backup/
+ date: "{{ lookup('pipe', 'date +%Y-%m-%d') }}"
+ 
+#  palo_provider:
+#        ip_address: "{{ ansible_host }}"
+#        api_key: "LUFRPT1TV09xa0pVZWh0WVZJbjkrSllNSjl4VzNGQTA9d1pENnRZb2hmbFpyK3REVFlSUkNsZz09"
+#        username: "rohit"
+#        password: "rob"
+#        port: "443"

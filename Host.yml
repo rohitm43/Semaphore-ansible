@@ -1,0 +1,39 @@
+[Firewall]
+HYDHUB-Pry ansible_host=172.16.3.8
+HYDHUB-sec ansible_host=172.16.3.9
+HYDK-Pry ansible_host=172.17.3.8
+HYDK-Sec ansible_host=172.17.3.9
+BANGK-Pry ansible_host=172.18.3.3
+BANGK-Sec ansible_host=172.18.3.4
+CHENK-Pry ansible_host=172.19.3.3
+CHENK-Sec ansible_host=172.19.3.4
+CochK-Pry ansible_host=172.20.3.3
+CochK-Sec ansible_host=172.20.3.4
+NoidaK-Pry ansible_host=172.21.3.8
+NoidaK-Sec ansible_host=172.21.3.9
+GuruK ansible_host=172.22.3.1
+SingK ansible_host=172.23.3.1
+# HYDHUB ansible_host=172.16.3.1
+# HYDK ansible_host=172.17.3.1
+# BANGK ansible_host=172.18.3.1
+# CHENK ansible_host=172.19.3.1
+# CochK ansible_host=172.20.3.1
+# NoidaK ansible_host=172.21.3.1
+# GuruK ansible_host=172.22.4.1
+# SingK ansible_host=172.23.3.1
+# HYDHT ansible_host=172.24.1.8
+
+[Firewall:vars]
+ansible_ssh_pass=Response@1233
+ansible_ssh_user=desynova
+ansible_python_interpreter=/usr/bin/python3
+
+# [Switch]
+# # sw ansible_host=172.24.1.5
+
+# [Switch:vars]
+# ansible_user=desynova
+# ansible_password=Response@123
+# ansible_become=yes
+# ansible_become_method=enable
+# ansible_network_os=ios

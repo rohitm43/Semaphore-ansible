@@ -1,0 +1,48 @@
+---
+- name: Palo Alto Firewalls Backup
+  hosts: Firewall
+  gather_facts: no
+  strategy: linear
+  pre_tasks:
+    - include_vars: vars.yml
+    
+  tasks:
+    
+    - name: Configure the Palo ALto
+      ansible.builtin.include_role: 
+         name: pa
+    
+    # - name: Configure the Switch 
+    #   ansible.builtin.include_role: 
+    #      name: switch
+    #   when: ( Menu == "2" )
+    
+    # - name: Configure the Windows
+    #   ansible.builtin.include_role: 
+    #      name: windows
+    #   when: ( Menu == "3" )
+    
+    # - name: Configure the Linux
+    #   ansible.builtin.include_role: 
+    #      name: linux
+    #   when: ( Menu == "4" )
+
+    # - name: Configure the AWS
+    #   ansible.builtin.include_role: 
+    #      name: aws
+    #   when: ( Menu == "5" )
+    
+    # - name: Configure the Teraform
+    #   ansible.builtin.include_role: 
+    #      name: teraform
+    #   when: ( Menu == "6" )
+    
+    # - name: Configure the Kubernates
+    #   ansible.builtin.include_role: 
+    #      name: kubernates
+    #   when: ( Menu == "7" )
+    
+    # - name: Configure the Jenkins
+    #   ansible.builtin.include_role: 
+    #      name: jenkins
+    #   when: ( Menu == "8" )
