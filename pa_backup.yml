@@ -1,0 +1,10 @@
+---
+- name: Palo Alto Firewalls Backup
+  hosts: Firewall
+  gather_facts: no
+  strategy: linear
+  pre_tasks:
+    - include_vars: vars.yml
+    
+  tasks:
+    
