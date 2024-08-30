@@ -7,4 +7,49 @@
     - include_vars: vars.yml
     
   tasks:
+    - name: Generate API Key
+      connection: local
+      check_mode: no
+      uri:
+        validate_certs: no
+        return_content: yes
+        url: 'https://{{ ansible_host }}/api/?type=keygen&user={{ ansible_ssh_user }}&password={{ ansible_ssh_pass }}'
+        method: GET
+      register: key_string
+
+    - name: Extract API Key from XML Output
+      connection: local
+      xml:
+        xmlstring: '{{key_string.content}}'
+        content: 'text'
+        xpath: '/response/result/key'
+      register: key_list
     
+    - name: Save backup of running configuration
+      paloaltonetworks.panos.panos_op:
+        api_key: "{{key_list.matches[0].key}}"
+        ip_address: "{{ ansible_host }}"
+        username: "{{ ansible_ssh_user }}"
+        password: "{{ ansible_ssh_pass }}"
+        cmd: 'save config to {{ inventory_hostname }}-Runnin_config-{{ date }}.xml'
+
+    - name: Backup configuration from PAN Equipement
+      connection: local
+      check_mode: no
+      uri:
+        validate_certs: no
+        url: "https://{{ ansible_host }}/api/?type=config&action=show&key={{key_list.matches[0].key}}"
+        return_content: yes
+        method: GET
+      register: response_pa_config
+
+    - name: Remove XML Header and Save file in {{configs_dir}}
+      connection: local
+      check_mode: no  
+      copy:
+        content: '"{{ response_pa_config.content | regex_replace("^<response.*<result>") | regex_replace("</response>/result>$") }}"'
+        dest: "{{ inventory_hostname }}-Runnin_config-{{ date }}.xml"       
+    
+
+         
+  
