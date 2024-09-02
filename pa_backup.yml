@@ -26,7 +26,7 @@
       register: key_list
     
     - name: Save backup of running configuration
-      panos.panos_op:
+      panos_op:
         api_key: "{{key_list.matches[0].key}}"
         ip_address: "{{ ansible_host }}"
         username: "{{ ansible_ssh_user }}"
