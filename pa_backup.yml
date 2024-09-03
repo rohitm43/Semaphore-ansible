@@ -4,7 +4,7 @@
   gather_facts: no
   strategy: linear
   collections:
-    - name: community.paloaltonetworks
+    - name: paloaltonetworks.panos
   pre_tasks:
     - include_vars: vars.yml
     
