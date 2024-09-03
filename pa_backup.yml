@@ -3,6 +3,8 @@
   hosts: Firewall
   gather_facts: no
   strategy: linear
+  collections:
+    - name: community.paloaltonetworks
   pre_tasks:
     - include_vars: vars.yml
     
@@ -26,7 +28,7 @@
       register: key_list
     
     - name: Save backup of running configuration
-      panos_op:
+      paloaltonetworks.panos.panos_op:
         api_key: "{{key_list.matches[0].key}}"
         ip_address: "{{ ansible_host }}"
         username: "{{ ansible_ssh_user }}"
