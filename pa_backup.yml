@@ -27,13 +27,13 @@
         xpath: '/response/result/key'
       register: key_list
     
-    - name: Save backup of running configuration
-      paloaltonetworks.panos.panos_op:
-        api_key: "{{key_list.matches[0].key}}"
-        ip_address: "{{ ansible_host }}"
-        username: "{{ ansible_ssh_user }}"
-        password: "{{ ansible_ssh_pass }}"
-        cmd: 'save config to {{ inventory_hostname }}-Runnin_config-{{ date }}.xml'
+    # - name: Save backup of running configuration
+    #   paloaltonetworks.panos.panos_op:
+    #     api_key: "{{key_list.matches[0].key}}"
+    #     ip_address: "{{ ansible_host }}"
+    #     username: "{{ ansible_ssh_user }}"
+    #     password: "{{ ansible_ssh_pass }}"
+    #     cmd: 'save config to {{ inventory_hostname }}-Runnin_config-{{ date }}.xml'
 
     - name: Backup configuration from PAN Equipement
       connection: local
