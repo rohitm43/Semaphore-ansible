@@ -50,7 +50,7 @@
       check_mode: no  
       copy:
         content: '"{{ response_pa_config.content | regex_replace("^<response.*<result>") | regex_replace("</response>/result>$") }}"'
-        dest: "{{ inventory_hostname }}-Runnin_config-{{ date }}.xml"       
+        dest: "{{ configs_dir }}/{{ inventory_hostname }}-Runnin_config-{{ date }}.xml"       
     
 
          
