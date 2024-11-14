@@ -1,7 +1,7 @@
  configs_dir: ./backup/
  date: "{{ lookup('pipe', 'date +%Y-%m-%d') }}"
  collections_paths: ~/.ansible/collections:/usr/share/ansible/collections:/home/rohit/.local/lib/python3.10/site-packages/ansible_collections
- 
+ configs_dir: /home/semaphore/PA_backup/
 #  palo_provider:
 #        ip_address: "{{ ansible_host }}"
 #        api_key: "LUFRPT1TV09xa0pVZWh0WVZJbjkrSllNSjl4VzNGQTA9d1pENnRZb2hmbFpyK3REVFlSUkNsZz09"
